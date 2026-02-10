@@ -16,7 +16,13 @@ describe('teOrange HRM Tests', () => {
     genericField: ".oxd-input--active",
     dateField: "[placeholder='dd-mm-yyyy']",
     dateCloseButton: ".--close",
-    submitButton: "[type='submit']" 
+    submitButton: "[type='submit']",
+    genericComboBox: ".oxd-select-text--arrow",
+    secondItemComboBox: '.oxd-select-dropdown > :nth-child(2)',
+    ThirdtemComboBox: '.oxd-select-dropdown > :nth-child(3)'
+    
+     
+     
   }
   
   it.only('User info Update - Success', () => {
@@ -35,9 +41,30 @@ describe('teOrange HRM Tests', () => {
     cy.get(selectorsList.genericField).eq(5).clear().type('DriversLicenseTest')
     cy.get(selectorsList.genericField).eq(6).clear().type('2026-02-10')
     cy.get(selectorsList.dateCloseButton).click()
-    cy.get(selectorsList.submitButton).eq(0).click()
+    
+    cy.intercept('PUT', '**/personal-details').as('saveUser')
+    cy.get(selectorsList.submitButton).eq(0).click({force: true})
     cy.get('body').should('contain', 'Successfully Updated')
-    cy.get('.oxd-toast')
+    cy.get('.oxd-toast') 
+    /*cy.get(selectorsList.submitButton).eq(0).click({ force: true })
+    cy.wait('@saveUser')
+    cy.get('.oxd-toast').should('exist').and('contain', 'Successfully Updated')*/
+
+    cy.get(selectorsList.genericComboBox).eq(0).click({force: true})
+    cy.get(selectorsList.secondItemComboBox).click()
+    cy.get(selectorsList.genericComboBox).eq(1).click({force: true})
+    cy.get(selectorsList.ThirdtemComboBox).click()
+
+
+
+    /*cy.get(selectorsList.genericComboBox).eq(0).click()
+    cy.contains('Bosnian').click()
+    cy.get(selectorsList.genericComboBox).eq(1).click()
+    cy.contains('Married').click()*/
+
+
+
+    
     
   })
 
