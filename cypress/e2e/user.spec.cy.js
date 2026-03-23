@@ -42,23 +42,6 @@ describe('teOrange HRM Tests', () => {
     cy.get(selectorsList.genericField).eq(6).clear().type('2026-02-10')
     cy.get(selectorsList.dateCloseButton).click()
     
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     cy.intercept('PUT', '**/personal-details').as('saveUser')
     cy.get(selectorsList.submitButton).eq(0).click({force: true})
     cy.get('body').should('contain', 'Successfully Updated')
@@ -72,17 +55,11 @@ describe('teOrange HRM Tests', () => {
     cy.get(selectorsList.genericComboBox).eq(1).click({force: true})
     cy.get(selectorsList.ThirdtemComboBox).click()
 
-
-
     /*cy.get(selectorsList.genericComboBox).eq(0).click()
     cy.contains('Bosnian').click()
     cy.get(selectorsList.genericComboBox).eq(1).click()
     cy.contains('Married').click()*/
 
-
-
-    
-    
   })
 
   it('Login - Fail', () => {
