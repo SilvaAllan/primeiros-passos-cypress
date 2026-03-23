@@ -42,6 +42,23 @@ describe('teOrange HRM Tests', () => {
     cy.get(selectorsList.genericField).eq(6).clear().type('2026-02-10')
     cy.get(selectorsList.dateCloseButton).click()
     
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     cy.intercept('PUT', '**/personal-details').as('saveUser')
     cy.get(selectorsList.submitButton).eq(0).click({force: true})
     cy.get('body').should('contain', 'Successfully Updated')
